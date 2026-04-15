@@ -1,0 +1,12 @@
+[
+  {
+    "Id": 1,
+    "Cliente": "Alexis",
+    "Productos": [
+      "Pizza Hawaiana"
+    ],
+    "Direccion": "A.A.H.H. Las Poncianas",
+    "Estado": "En camino",
+    "FechaPedido": "2026-04-14T19:06:58.7585109-05:00"
+  }
+]

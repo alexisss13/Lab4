@@ -1,0 +1,10 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "Alexis",
+    "Email": "alexisjarenlevanodominguez@gmail.com",
+    "Rol": "Alumno",
+    "FechaRegistro": "2026-04-14T19:08:05",
+    "Activo": false
+  }
+]

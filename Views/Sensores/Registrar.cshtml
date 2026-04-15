@@ -1,0 +1,44 @@
+@model Lab4.Models.LecturaSensor
+@{
+    ViewData["Title"] = "Registrar Lectura";
+}
+
+<h2>📊 Registrar Lectura de Sensor</h2>
+
+<div class="card">
+    <div class="card-body">
+        <form asp-action="Registrar" method="post">
+            <div class="mb-3">
+                <label class="form-label">ID del Sensor</label>
+                <input asp-for="SensorId" class="form-control" placeholder="Ej: SENSOR-001" required />
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Temperatura (°C)</label>
+                    <input asp-for="Temperatura" type="number" step="0.01" class="form-control" required />
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Humedad (%)</label>
+                    <input asp-for="Humedad" type="number" step="0.01" class="form-control" required />
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Ubicación</label>
+                <input asp-for="Ubicacion" class="form-control" placeholder="Ej: Sala A" required />
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-info">💾 Registrar Lectura</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-4 alert alert-warning">
+    <strong>⚠️ Rotación de Logs:</strong> Cuando el archivo de lecturas supera los 100 KB, 
+    automáticamente se crea un nuevo archivo para continuar registrando datos.
+</div>

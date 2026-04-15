@@ -1,0 +1,82 @@
+@model List<Lab4.Models.Pedido>
+@{
+    ViewData["Title"] = "Gestión de Pedidos";
+}
+
+<h2>📦 Sistema de Delivery - Gestión de Pedidos</h2>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Mensaje"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="mb-3">
+    <a asp-action="Crear" class="btn btn-primary">➕ Nuevo Pedido</a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Historial de Pedidos</h5>
+        
+        @if (Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Productos</th>
+                            <th>Dirección</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var pedido in Model.OrderByDescending(p => p.FechaPedido))
+                        {
+                            <tr>
+                                <td>@pedido.Id</td>
+                                <td>@pedido.Cliente</td>
+                                <td>@string.Join(", ", pedido.Productos)</td>
+                                <td>@pedido.Direccion</td>
+                                <td>
+                                    <span class="badge bg-@(pedido.Estado == "Entregado" ? "success" : pedido.Estado == "En camino" ? "warning" : "secondary")">
+                                        @pedido.Estado
+                                    </span>
+                                </td>
+                                <td>@pedido.FechaPedido.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>
+                                    @if (pedido.Estado != "Entregado")
+                                    {
+                                        <form asp-action="ActualizarEstado" method="post" class="d-inline">
+                                            <input type="hidden" name="id" value="@pedido.Id" />
+                                            <select name="estado" class="form-select form-select-sm d-inline w-auto" onchange="this.form.submit()">
+                                                <option value="">Cambiar estado...</option>
+                                                <option value="Pendiente">Pendiente</option>
+                                                <option value="En camino">En camino</option>
+                                                <option value="Entregado">Entregado</option>
+                                            </select>
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">No hay pedidos registrados.</p>
+        }
+    </div>
+</div>
+
+<div class="mt-4">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">← Volver al inicio</a>
+</div>

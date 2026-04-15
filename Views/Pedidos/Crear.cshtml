@@ -1,0 +1,48 @@
+@model Lab4.Models.Pedido
+@{
+    ViewData["Title"] = "Nuevo Pedido";
+}
+
+<h2>➕ Crear Nuevo Pedido</h2>
+
+<div class="card">
+    <div class="card-body">
+        <form asp-action="Crear" method="post">
+            <div class="mb-3">
+                <label class="form-label">Cliente</label>
+                <input asp-for="Cliente" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Productos (separados por comas)</label>
+                <input type="text" name="productosTexto" class="form-control" 
+                       placeholder="Ej: Pizza Margarita, Coca Cola 2L, Helado" required />
+                <small class="form-text text-muted">Ingrese los productos separados por comas</small>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Dirección de Entrega</label>
+                <textarea asp-for="Direccion" class="form-control" rows="2" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Estado</label>
+                <select asp-for="Estado" class="form-select">
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="En camino">En camino</option>
+                    <option value="Entregado">Entregado</option>
+                </select>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">💾 Guardar Pedido</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-4 alert alert-info">
+    <strong>ℹ️ Ejercicio 1:</strong> Este módulo implementa serialización JSON automática. 
+    Cada pedido se guarda en formato JSON y se deserializa al cargar la aplicación.
+</div>

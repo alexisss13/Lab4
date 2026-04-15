@@ -1,0 +1,107 @@
+@model Dictionary<string, List<Lab4.Models.LecturaSensor>>
+@{
+    ViewData["Title"] = "Gráficas de Sensores";
+}
+
+<h2>📈 Análisis de Datos - Evolución de Mediciones</h2>
+
+<div class="mb-3">
+    <a asp-action="Index" class="btn btn-secondary">← Volver a Lecturas</a>
+</div>
+
+@if (Model.Any())
+{
+    foreach (var sensor in Model)
+    {
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Sensor: @sensor.Key</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Evolución de Temperatura</h6>
+                        <canvas id="temp-@sensor.Key" style="max-height: 300px;"></canvas>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Evolución de Humedad</h6>
+                        <canvas id="hum-@sensor.Key" style="max-height: 300px;"></canvas>
+                    </div>
+                </div>
+                
+                <div class="mt-3">
+                    <table class="table table-sm">
+                        <tr>
+                            <th>Total Lecturas:</th>
+                            <td>@sensor.Value.Count</td>
+                            <th>Temp. Min:</th>
+                            <td>@sensor.Value.Min(l => l.Temperatura).ToString("F2")°C</td>
+                            <th>Temp. Max:</th>
+                            <td>@sensor.Value.Max(l => l.Temperatura).ToString("F2")°C</td>
+                        </tr>
+                        <tr>
+                            <th>Ubicación:</th>
+                            <td>@sensor.Value.First().Ubicacion</td>
+                            <th>Hum. Min:</th>
+                            <td>@sensor.Value.Min(l => l.Humedad).ToString("F2")%</td>
+                            <th>Hum. Max:</th>
+                            <td>@sensor.Value.Max(l => l.Humedad).ToString("F2")%</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="alert alert-warning">No hay datos suficientes para generar gráficas.</div>
+}
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        @foreach (var sensor in Model)
+        {
+            var labels = System.Text.Json.JsonSerializer.Serialize(sensor.Value.Select(l => l.FechaLectura.ToString("HH:mm")));
+            var temperaturas = System.Text.Json.JsonSerializer.Serialize(sensor.Value.Select(l => l.Temperatura));
+            var humedades = System.Text.Json.JsonSerializer.Serialize(sensor.Value.Select(l => l.Humedad));
+            
+            @:new Chart(document.getElementById('temp-@sensor.Key'), {
+                @:type: 'line',
+                @:data: {
+                    @:labels: @Html.Raw(labels),
+                    @:datasets: [{
+                        @:label: 'Temperatura (°C)',
+                        @:data: @Html.Raw(temperaturas),
+                        @:borderColor: 'rgb(255, 99, 132)',
+                        @:backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                        @:tension: 0.1
+                    @:}]
+                @:},
+                @:options: {
+                    @:responsive: true,
+                    @:maintainAspectRatio: true
+                @:}
+            @:});
+
+            @:new Chart(document.getElementById('hum-@sensor.Key'), {
+                @:type: 'line',
+                @:data: {
+                    @:labels: @Html.Raw(labels),
+                    @:datasets: [{
+                        @:label: 'Humedad (%)',
+                        @:data: @Html.Raw(humedades),
+                        @:borderColor: 'rgb(54, 162, 235)',
+                        @:backgroundColor: 'rgba(54, 162, 235, 0.1)',
+                        @:tension: 0.1
+                    @:}]
+                @:},
+                @:options: {
+                    @:responsive: true,
+                    @:maintainAspectRatio: true
+                @:}
+            @:});
+        }
+    </script>
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "Id": 1,
+    "SensorId": "Sensor01",
+    "Temperatura": 150,
+    "Humedad": 40,
+    "FechaLectura": "2026-04-14T19:09:03.911361-05:00",
+    "Ubicacion": "Sala A"
+  },
+  {
+    "Id": 2,
+    "SensorId": "SENSOR-003",
+    "Temperatura": 15.59,
+    "Humedad": 47.41,
+    "FechaLectura": "2026-04-14T19:10:29.9272627-05:00",
+    "Ubicacion": "Sala B"
+  },
+  {
+    "Id": 3,
+    "SensorId": "SENSOR-003",
+    "Temperatura": 34.81,
+    "Humedad": 64.55,
+    "FechaLectura": "2026-04-14T19:09:29.9376238-05:00",
+    "Ubicacion": "Sala B"
+  },
+  {
+    "Id": 4,
+    "SensorId": "SENSOR-003",
+    "Temperatura": 22.81,
+    "Humedad": 59.01,
+    "FechaLectura": "2026-04-14T19:08:29.9432761-05:00",
+    "Ubicacion": "Sala B"
+  },
+  {
+    "Id": 5,
+    "SensorId": "SENSOR-003",
+    "Temperatura": 20.86,
+    "Humedad": 33.82,
+    "FechaLectura": "2026-04-14T19:07:29.9483663-05:00",
+    "Ubicacion": "Sala A"
+  },
+  {
+    "Id": 6,
+    "SensorId": "SENSOR-003",
+    "Temperatura": 26.42,
+    "Humedad": 68.39,
+    "FechaLectura": "2026-04-14T19:06:29.9531671-05:00",
+    "Ubicacion": "Exterior"
+  },
+  {
+    "Id": 7,
+    "SensorId": "SENSOR-002",
+    "Temperatura": 27.5,
+    "Humedad": 46.5,
+    "FechaLectura": "2026-04-14T19:05:29.9583202-05:00",
+    "Ubicacion": "Sala A"
+  },
+  {
+    "Id": 8,
+    "SensorId": "SENSOR-003",
+    "Temperatura": 21.38,
+    "Humedad": 32.15,
+    "FechaLectura": "2026-04-14T19:04:29.9632536-05:00",
+    "Ubicacion": "Sala A"
+  },
+  {
+    "Id": 9,
+    "SensorId": "SENSOR-001",
+    "Temperatura": 23.92,
+    "Humedad": 39.9,
+    "FechaLectura": "2026-04-14T19:03:29.9684113-05:00",
+    "Ubicacion": "Sala B"
+  },
+  {
+    "Id": 10,
+    "SensorId": "SENSOR-001",
+    "Temperatura": 22.4,
+    "Humedad": 56.29,
+    "FechaLectura": "2026-04-14T19:02:29.9742648-05:00",
+    "Ubicacion": "Sala A"
+  },
+  {
+    "Id": 11,
+    "SensorId": "SENSOR-001",
+    "Temperatura": 34.5,
+    "Humedad": 49.94,
+    "FechaLectura": "2026-04-14T19:01:29.9791469-05:00",
+    "Ubicacion": "Exterior"
+  }
+]

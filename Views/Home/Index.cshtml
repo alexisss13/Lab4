@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Laboratorio 4 - Serialización JSON";
+}
+
+<div class="text-center mb-5">
+    <h1 class="display-4">Laboratorio 4</h1>
+    <p class="lead">Serialización y Deserialización JSON en ASP.NET Core MVC</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">📦 Ejercicio 1</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Sistema de Delivery</h6>
+                <p class="card-text">Gestión de pedidos con serialización JSON automática. Almacena historial de pedidos diarios.</p>
+                <a asp-controller="Pedidos" asp-action="Index" class="btn btn-primary">Ir a Pedidos</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">🎓 Ejercicio 2</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Control de Acceso Educativo</h6>
+                <p class="card-text">Gestión de usuarios con StreamWriter/StreamReader y control de concurrencia.</p>
+                <a asp-controller="Usuarios" asp-action="Index" class="btn btn-success">Ir a Usuarios</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">🌡️ Ejercicio 3</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Sensores IoT</h6>
+                <p class="card-text">Monitoreo ambiental con rotación de logs y análisis de datos de temperatura y humedad.</p>
+                <a asp-controller="Sensores" asp-action="Index" class="btn btn-info">Ir a Sensores</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5">
+    <h3>Características Implementadas</h3>
+    <ul class="list-group">
+        <li class="list-group-item">✅ Serialización y deserialización JSON con System.Text.Json</li>
+        <li class="list-group-item">✅ Uso de StreamWriter y StreamReader para manejo de archivos</li>
+        <li class="list-group-item">✅ Control de concurrencia con SemaphoreSlim</li>
+        <li class="list-group-item">✅ Rotación automática de archivos de logs</li>
+        <li class="list-group-item">✅ Persistencia de datos en formato JSON</li>
+    </ul>
+</div>
